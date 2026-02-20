@@ -176,6 +176,13 @@ nav {
   transition: var(--transition);
 }
 
+/* Hide the header/nav once user scrolls past the hero (after home) */
+.hidden-after-home {
+  transform: translateY(-130%);
+  opacity: 0;
+  pointer-events: none;
+}
+
 nav.scrolled {
   background: var(--white);
   padding: 1rem 0;

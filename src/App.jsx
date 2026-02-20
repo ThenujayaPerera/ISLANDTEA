@@ -33,6 +33,7 @@ const App = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const [showHeader, setShowHeader] = useState(true);
 
     // Slideshow State
     const [sigIndex, setSigIndex] = useState(0);
@@ -55,6 +56,9 @@ const App = () => {
 
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
+            const heroHeight = heroImgRef.current ? heroImgRef.current.clientHeight : window.innerHeight;
+            // keep header visible while menu is open
+            setShowHeader(isMenuOpen || window.scrollY < (heroHeight - 50));
             if (heroImgRef.current) {
                 const value = window.scrollY;
                 heroImgRef.current.style.transform = `scale(${1 + value * 0.0005}) translateY(${value * 0.15}px)`;
@@ -110,7 +114,7 @@ const App = () => {
                 </div>
             </div>
 
-            <nav id="navbar" className={isScrolled ? 'scrolled' : ''}>
+            <nav id="navbar" className={`${isScrolled ? 'scrolled' : ''} ${!showHeader ? 'hidden-after-home' : ''}`}>
                 <div className="container nav-content">
                     <a href="#" className="logo">Island TEA & Ceylon Coffee</a>
                     {/* Overlay for sidebar close */}
