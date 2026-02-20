@@ -129,6 +129,7 @@ const App = () => {
                         />
                     )}
                     <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+                        <button className="nav-close" onClick={() => setIsMenuOpen(false)} aria-label="Close sidebar">×</button>
                         <a href="#about" onClick={() => setIsMenuOpen(false)}>Our Story</a>
                         <a href="#menu" onClick={() => setIsMenuOpen(false)}>Menu</a>
                         <a href="#experience" onClick={() => setIsMenuOpen(false)}>Ambience</a>
