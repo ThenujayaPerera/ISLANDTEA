@@ -113,6 +113,21 @@ const App = () => {
             <nav id="navbar" className={isScrolled ? 'scrolled' : ''}>
                 <div className="container nav-content">
                     <a href="#" className="logo">Island TEA & Ceylon Coffee</a>
+                    {/* Overlay for sidebar close */}
+                    {isMenuOpen && (
+                        <div
+                            style={{
+                                position: 'fixed',
+                                top: 0,
+                                left: 0,
+                                width: '100vw',
+                                height: '100vh',
+                                background: 'rgba(0,0,0,0.15)',
+                                zIndex: 1099
+                            }}
+                            onClick={() => setIsMenuOpen(false)}
+                        />
+                    )}
                     <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
                         <a href="#about" onClick={() => setIsMenuOpen(false)}>Our Story</a>
                         <a href="#menu" onClick={() => setIsMenuOpen(false)}>Menu</a>
@@ -123,6 +138,8 @@ const App = () => {
                         className={`menu-toggle ${isMenuOpen ? 'active' : ''}`}
                         id="menu-toggle"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        style={isMenuOpen ? { zIndex: 1200 } : {}}
+                        aria-label="Close sidebar"
                     >
                         <span></span>
                         <span></span>

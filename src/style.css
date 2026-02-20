@@ -715,6 +715,7 @@ footer {
     top: 0;
     right: -100%;
     width: 80%;
+    max-width: 350px;
     height: 100vh;
     background: var(--white);
     flex-direction: column;
@@ -724,6 +725,22 @@ footer {
     transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
     display: flex !important;
+    z-index: 1100;
+  }
+
+  @media (max-width: 480px) {
+    .nav-links {
+      width: 70%;
+      max-width: 260px;
+    }
+    .menu-toggle {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 1200;
+      display: flex !important;
+    }
+  }
   }
 
   .nav-links.active {
